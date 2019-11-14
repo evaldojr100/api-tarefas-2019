@@ -33,4 +33,6 @@ class CategoriaController {
     this._categoriaService.inserirCategoria(categoria.toJSON())
       .then(res => console.log(res))
   }
+
+ 
 }

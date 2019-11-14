@@ -56,7 +56,7 @@ exports.listarPorPrioridade_paginado = (req, res) => {
  /*  http://localhost:3009/api/v1/tarefas/filtro/prioridade_pagination/?page=2&prioridade=1 */
    const page = req.query.page
    const prioridade = req.query.prioridade;
-   const query = " select * from tarefas where prioridade = ? LIMIT ?,?;"
+   const query = " select tarefas.descricao, tarefas.data, tarefas.realizado,categorias.descricao as 'categoria_desc',categorias.cor from tarefas,categorias where tarefas.categoria_id=categorias.id and tarefas.prioridade = ? LIMIT ?,?;"
    
  
    if (parseInt(page) < 1 ) {
@@ -446,3 +446,4 @@ exports.listarPorDatas = (req, res) => {
     })
   }
 }
+

@@ -20,6 +20,21 @@ class TarefaController {
       .then(() => this._tarefaView.montarGrid(this._tarefas))
   }
 
+   //método desenvolvido pelo juliano
+   listar_por_prioridade (prioridade,pagina){
+    console.log(prioridade)
+    this._tarefas.limpar();
+    this._tarefaService.listarTodas_por_prioridade(prioridade,pagina)
+    .then(tarefas => {
+      tarefas.map(tarefa => {
+        console.log(tarefa)
+        this._tarefas.adicionar(tarefa)}
+        )
+    })
+    .then(() => this._tarefaView.montarGrid(this._tarefas))
+  }
+  //fim do método desenvolvido por juliano
+
   carregarFormulario(){
     
     // Mostra o formulário
