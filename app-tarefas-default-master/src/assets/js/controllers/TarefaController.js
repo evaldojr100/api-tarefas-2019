@@ -33,6 +33,19 @@ class TarefaController {
     })
     .then(() => this._tarefaView.montarGrid(this._tarefas))
   }
+
+  listar_por_deletados (pagina){
+    console.log(pagina)
+    this._tarefas.limpar();
+    this._tarefaService.listarTodas_por_deletado(pagina)
+    .then(tarefas => {
+      tarefas.map(tarefa => {
+        console.log(tarefa)
+        this._tarefas.adicionar(tarefa)}
+        )
+    })
+    .then(() => this._tarefaView.montarGrid(this._tarefas))
+  }
   //fim do método desenvolvido por juliano
 
   carregarFormulario(){

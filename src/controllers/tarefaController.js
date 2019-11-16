@@ -83,7 +83,7 @@ exports.listarPorPrioridade_paginado = (req, res) => {
   /*  http://localhost:3009/api/v1/tarefas/filtro/deletados_pagination/?page=1*/
     const page = req.query.page
   
-    const query = " select * from tarefas where deletado  = 1;"
+    const query = "select tarefas.descricao, tarefas.data, tarefas.realizado,categorias.descricao as 'categoria_desc',categorias.cor from tarefas,categorias where tarefas.categoria_id=categorias.id and tarefas.deletado = 1 "
     
   
     if (parseInt(page) < 1  || isNaN(parseInt(page) && isFinite(page))) {
