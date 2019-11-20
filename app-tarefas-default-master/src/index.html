@@ -38,7 +38,7 @@
       <div class="align-self-center d-flex">
         <form class="form-inline">
 
-          <button class="btn btn-success mr-3" id="btn-novo" onclick="tarefaController.carregarFormulario(this)">
+          <button class="btn btn-success mr-3" id="btn-novo" onclick="tarefaController.carregarFormulario(this),tarefaController.trocarModalSalvar(this)">
             <img src="assets/images/add-white.svg" alt="Nova tarefa"> Nova</button>
         </form>
         <!--Imagens da notificação-->
@@ -162,11 +162,11 @@
 
     </section>
      <!--Modal de tarefas -->
-    <div class="modal" id="modal">
+    <div class="modal" id="modalTarefa">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title font-weight-bold">Inserir nova tarefa</h4>
+            <h4 id ="tituloModalTarefa" class="modal-title font-weight-bold">Inserir nova tarefa</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -175,15 +175,15 @@
             <form class="form">
               <div class="form-group">
                 <label for="descricao">Descrição:</label>
-                <input type="text" id="descricao" class="form-control" value="Fazer algo">
+                <input type="text" id="descricaoTarefa" class="form-control" value="Fazer algo">
               </div>
               <div class="form-group">
-                <label for="data">Data:</label>
-                <input type="date" id="data" class="form-control" value="2019-10-10">
+                <label for="dataTarefa">Data:</label>
+                <input type="date" id="dataTarefa" class="form-control" value="2019-10-10">
               </div>
               <div class="form-group">
-                <label for="categoria">Categoria:</label>
-                <select id="categoria" class="form-control">
+                <label for="categoriaTarefa">Categoria:</label>
+                <select id="categoriaTarefa" class="form-control">
                   <option value="1">Escola</option>
                   <option value="2">Trabalho de conclusão</option>
                   <option value="3">Trabalho</option>
@@ -191,8 +191,8 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="categoria">Prioridade:</label>
-                <select id="categoria" class="form-control">
+                <label for="categoriaTarefa">Prioridade:</label>
+                <select id="categoriaTarefa" class="form-control">
                   <option value="1">Baixa</option>
                   <option value="2">Média</option>
                   <option value="3">Alta</option>
@@ -202,8 +202,11 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary" id="btn-salvar"
+            <button type="button" class="btn btn-primary" id="btn-salvarT"
               onclick="tarefaController.inserir()">Salvar</button>
+
+            <button type="button" class="btn btn-primary" id="btn-alterarT"
+              onclick="tarefaController.alterar()">Alterar</button>
           </div>
         </div>
     </div>
