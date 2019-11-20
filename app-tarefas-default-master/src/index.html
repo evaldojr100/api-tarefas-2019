@@ -43,10 +43,7 @@
         </form>
         <!--Imagens da notificação-->
         <a href="#" class="d-flex justify-content-between  pt-2 pb-2">
-          <img src="assets/images/sino.svg" alt="Sino das notificações">
-        </a>
-        <a href="#" class="d-flex justify-content-between  pt-2 pb-2">
-          <img src="assets/images/sino-com-item.svg" alt="Sino das notificações com item">
+          <img src="assets/images/sino.svg" id="icone" alt="Sino das notificações">
         </a>
       </div>
       
@@ -87,9 +84,9 @@
               </div>
               <div class="">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" href="#collapse1">Mais...</a>
+                  <a data-toggle="collapse" href="#collapse1" onclick="mudar(icone1)">Mais...</a>
                   <span data-toggle="collapse" href="#collapse1" class="pull-right clickable"><i
-                      class="glyphicon glyphicon-chevron-down"></i></span>
+                       id="icone1" class="glyphicon glyphicon-chevron-down" onclick="mudar(icone1)"></i></span>
                 </h4>
               </div>
             </div>
@@ -240,6 +237,32 @@
   <script src="assets/js/bootstrap/popper.min.js"></script>
   <script src="assets/js/bootstrap/bootstrap.min.js"></script>
   <script src="bootstrap-colorselector.js"></script>
+
+  <script>
+    function mudar(icone1){
+      // Script do ícone do "Mais..."
+      if(document.getElementById("icone1").className == "glyphicon glyphicon-chevron-down"){
+        document.getElementById("icone1").className = "glyphicon glyphicon-chevron-up";
+      }else{
+        document.getElementById("icone1").className = "glyphicon glyphicon-chevron-down";
+      }
+    }
+  </script>
+  <script>
+    // Script do ícone de notificação
+    var notificacao = 1;
+    var img = document.getElementById("icone");
+
+    if(notificacao>=1){
+      {
+        img.src = "assets/images/sino-com-item.svg";
+      }
+    } else {
+      {
+        img.src = "assets/images/sino.svg";
+      }
+    }
+  </script>
 </body>
 
 </html>
