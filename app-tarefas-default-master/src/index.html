@@ -43,10 +43,7 @@
         </form>
         <!--Imagens da notificação-->
         <a href="#" class="d-flex justify-content-between  pt-2 pb-2">
-          <img src="assets/images/sino.svg" alt="Sino das notificações">
-        </a>
-        <a href="#" class="d-flex justify-content-between  pt-2 pb-2">
-          <img src="assets/images/sino-com-item.svg" alt="Sino das notificações com item">
+          <img src="assets/images/sino.svg" id="icone" alt="Sino das notificações">
         </a>
       </div>
       
@@ -245,12 +242,26 @@
 
   <script>
     function mudar(icone1){
-      //var x = document.getElementById("icone1").className;
-      //console.log(x)
+      // Script do ícone do "Mais..."
       if(document.getElementById("icone1").className == "glyphicon glyphicon-chevron-down"){
         document.getElementById("icone1").className = "glyphicon glyphicon-chevron-up";
       }else{
         document.getElementById("icone1").className = "glyphicon glyphicon-chevron-down";
+      }
+    }
+  </script>
+  <script>
+    // Script do ícone de notificação
+    var notificacao = 1;
+    var img = document.getElementById("icone");
+
+    if(notificacao>=1){
+      {
+        img.src = "assets/images/sino-com-item.svg";
+      }
+    } else {
+      {
+        img.src = "assets/images/sino.svg";
       }
     }
   </script>
