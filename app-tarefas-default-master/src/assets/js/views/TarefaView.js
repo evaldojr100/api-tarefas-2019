@@ -45,9 +45,9 @@ class TarefaView {
           </svg>${tarefa.categoria_desc}</div>
         </div>
         <div class="flex-column">
-          <div>
-            <a href="#"><img src="assets/images/delete.svg" alt=""></a>
-          </div>
+        <div>
+          <a href="#"><img onclick="tarefaController.deletar(${tarefa.id})" src="assets/images/delete.svg" alt=""></a>
+        </div>
           <div class="mt-3">
             <a href="#"><img src="assets/images/editar.svg" alt=""></a>
           </div>

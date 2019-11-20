@@ -62,7 +62,9 @@ class TarefaController {
 
   }
 
-  deletar(){
+  deletar(id){
+    this._tarefaService.deletar(id)
+    // Passa os dados para a View
     
   }
 }

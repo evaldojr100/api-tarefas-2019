@@ -164,7 +164,7 @@ exports.listarPorPrioridade_paginado = (req, res) => {
       }
 exports.listar = (req, res) => {
 
-    const query = "select tarefas.descricao, tarefas.data, tarefas.realizado,categorias.descricao as 'categoria_desc',categorias.cor from tarefas,categorias where tarefas.categoria_id=categorias.id"
+    const query = "select tarefas.id,tarefas.descricao, tarefas.data, tarefas.realizado,categorias.descricao as 'categoria_desc',categorias.cor from tarefas,categorias where tarefas.categoria_id=categorias.id"
 
     conexao.query(query , (err, rows) =>{
         if(err){

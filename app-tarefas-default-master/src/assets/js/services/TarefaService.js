@@ -3,6 +3,10 @@ class TarefaService extends Service {
   constructor(){
     super()
     this._path = `${this._url}/tarefas/`
+    this._tarefas = new Tarefas()
+    this._tarefaView = new TarefaView
+  
+    
   }
 
   listarTodas(descricao){
@@ -61,7 +65,24 @@ class TarefaService extends Service {
 
   }
 
-  deletar(tarefa){
+  deletar(_id){
+    console.log("deletando " + _id)
+    const parametros = {
+      method: 'DELETE',
+      headers: {"Content-Type": "application/json"}
+    }
+    // console.log(tarefa)
+    return fetch(`${this._path}/` + _id, parametros)
+            .then(res => {
+              if (!res.ok) throw new Error(res.statusText)
+              return res.json()
+              
+            })
+            .then(this._tarefas.deletar(_id))
+            .then(document.location.reload(true))
+            .catch(e => console.log(e))
+
+    
 
   }
 }
