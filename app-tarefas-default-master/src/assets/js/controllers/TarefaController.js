@@ -13,7 +13,9 @@ class TarefaController {
       .then(tarefas => {
         tarefas.map(tarefa => {
           console.log(tarefa)
-          this._tarefas.adicionar(tarefa)}
+          this._tarefas.adicionar(tarefa)
+        }
+          
           )
       })
       // Passa os dados para a View
@@ -80,10 +82,22 @@ class TarefaController {
     Descricao.value = descricao
 
     const Categoria = document.querySelector('#categoriaTarefa')
-    Categoria.value = categoria
+    Categoria.value = innerText(categoria)
 
     const Prioridade = document.querySelector('#prioridadeTarefa')
-    Prioridade.value = prioridade
+    if(prioridade == 1){
+          let pri= "Alta"
+          Prioridade.value = innerText(pri)
+    }
+    else if(prioridade == 2){
+          let pri = "Média"
+          Prioridade.value = innerText(pri)
+    }
+    else if(prioridade == 3){
+          let pri = "Baixa"
+         Prioridade.value == innerText(pri)
+
+    }
   }
 
   inserir(){

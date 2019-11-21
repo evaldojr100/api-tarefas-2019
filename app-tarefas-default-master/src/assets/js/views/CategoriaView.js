@@ -1,7 +1,7 @@
 class CategoriaView{
 
   constructor(){
-    // this._grid = document.querySelector('#grid')
+    
 
     // Adicionando um listernet no botão que carrega o formulário
     this._btnCategoria = document.querySelector('#btn-categoria')
@@ -36,6 +36,10 @@ class CategoriaView{
         `
       }).join('')}
     `
+  }
+
+  templateModalCategorias(categorias){
+    return
   }
 
   montarListagem(categorias){

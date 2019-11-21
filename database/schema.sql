@@ -39,7 +39,7 @@ create TABLE if not exists tarefas(
   data          datetime      not null  default         now(),
   realizado     boolean       not null  default         false,
   categoria_id  int           not null,
-  prioridade    int           not null default 1,
+  prioridade    int           not null,
   id_user       int           not null,
   deletado      char,
   id_tarefa     int,
@@ -49,15 +49,15 @@ create TABLE if not exists tarefas(
   foreign key (id_user) references usuarios(id),
   foreign key (id_tarefa) references tarefas(id)
 );
-insert into tarefas (descricao, data, realizado, categoria_id,id_user) values 
+insert into tarefas (descricao, data, realizado, categoria_id,id_user,prioridade) values 
 
-  ('Pagar conta de energia', '2018-10-03 10:00:00', false, 1, 1),
-  ('Inciar o trabalho de ED', '2018-10-03 12:00:00', false, 2, 1),
-  ('Pagar conta de energia', '2018-10-03 10:0', false, 1, 1),
-  ('Inciar o trabalho', '2018-10-03 12:00:00', false, 2, 1),
-  ('Abastecer o carro', '2018-10-04 00:00:00', true, 1, 1),
-  ('Pagar conta de água', '2018-11-12 10:00:00', true, 1, 1),
-  ('Entregar trabalho de ED', '2018-11-14 19:00:00', false, 2, 1),
-  ('Entregar trabalho de Meio Ambiente', '2018-11-15 19:00:00', false, 2, 1),
-  ('Verificar folha de ponto', '2018-12-13 19:00:00', false, 4, 1),
-  ('Entregar capítulo introducao', '2018-11-28 19:00:00', false, 3, 1);
+  ('Pagar conta de energia', '2018-10-03 10:00:00', false, 1, 1, 1),
+  ('Inciar o trabalho de ED', '2018-10-03 12:00:00', false, 2, 1, 2),
+  ('Pagar conta de energia', '2018-10-03 10:0', false, 1, 1, 3),
+  ('Inciar o trabalho', '2018-10-03 12:00:00', false, 2, 1, 1),
+  ('Abastecer o carro', '2018-10-04 00:00:00', true, 1, 1, 2),
+  ('Pagar conta de água', '2018-11-12 10:00:00', true, 1, 1, 3),
+  ('Entregar trabalho de ED', '2018-11-14 19:00:00', false, 2, 1, 1),
+  ('Entregar trabalho de Meio Ambiente', '2018-11-15 19:00:00', false, 2, 1, 2),
+  ('Verificar folha de ponto', '2018-12-13 19:00:00', false, 4, 1, 3),
+  ('Entregar capítulo introducao', '2018-11-28 19:00:00', false, 3, 1, 1);
