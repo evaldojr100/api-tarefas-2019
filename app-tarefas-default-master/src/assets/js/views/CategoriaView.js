@@ -1,7 +1,8 @@
 class CategoriaView{
 
   constructor(){
-    // this._grid = document.querySelector('#grid')
+    this._grid = document.querySelector('#gridCategoria')
+    this._categorias = document.querySelector('#categoriaTarefa')
 
     // Adicionando um listernet no botão que carrega o formulário
     this._btnCategoria = document.querySelector('#btn-categoria')
@@ -37,6 +38,27 @@ class CategoriaView{
       }).join('')}
     `
   }
+
+  
+
+  templateGrid(categorias){
+    return `
+      ${categorias.listar().map(categoria => {
+        return `
+
+        <option value="${categoria.id}">${categoria.descricao}
+                  </option>`
+
+      }).join('')}
+    `
+  }
+  montarGrid(categorias){
+    // tarefas.listar().map(t => console.log(t))
+    this._categorias.innerHTML = ''
+    this._categorias.innerHTML = this.templateGrid(categorias)
+  }
+
+  
 
   montarListagem(categorias){
     // categorias.listar().map(c => console.log(c))

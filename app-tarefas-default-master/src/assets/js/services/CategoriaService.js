@@ -4,6 +4,7 @@ class CategoriaService extends Service {
     super()
     this._path = `${this._url}/categorias`
   }
+  
 
   listarTodas(){
     return fetch(`${this._path}`)
@@ -13,4 +14,8 @@ class CategoriaService extends Service {
             })
             .catch(erro => Mensagem.mostrar(erro, 'alert-danger'))
   }
+
+  
+
+
 }
