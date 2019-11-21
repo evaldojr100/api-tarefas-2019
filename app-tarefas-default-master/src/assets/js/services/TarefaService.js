@@ -19,6 +19,26 @@ class TarefaService extends Service {
             .catch(erro => Mensagem.mostrar(erro, 'alert-danger'))
   }
 
+  //alterações xbacon(ikaro)
+  listarTodas_por_categoria(id, pagina){
+    this._path = `http://localhost:3009/api/v1/tarefas/filtro/categoria_pagination/?page=${pagina}&categoria_id=${id}`
+    console.log(this._path)
+
+    const parametros = {
+      method: 'GET',
+      headers:{
+        "Content-type": "application/json",
+      }
+    }
+    return fetch(`${this._path}`, parametros)
+    .then(res =>{
+      if(!res.ok) throw new Error(res.statusText)
+      return res.json()
+    })
+    .catch(erro => Mensagem.mostrar(erro, 'alert-danger'))
+  }
+  //Fim alterações xbacon(ikaro)
+
   //alterações juliano
   listarTodas_por_prioridade(prioridade, pagina){
     this._path = `http://localhost:3009/api/v1/tarefas/filtro/prioridade_pagination/?page=${pagina}&prioridade=${prioridade}`

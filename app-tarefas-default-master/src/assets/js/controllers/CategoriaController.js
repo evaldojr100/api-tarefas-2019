@@ -6,6 +6,8 @@ class CategoriaController {
     this._categoriaView = new CategoriaView()
   }
 
+
+
   montar(){
     this._categorias.limpar()
     this._categoriaService.listarTodas()

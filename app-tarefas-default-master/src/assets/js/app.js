@@ -19,3 +19,5 @@ link_prioridade_baixa.addEventListener("click", function(){tarefaController.list
 var link_deletados = document.getElementById("btn-lixeira");
 link_deletados.addEventListener("click", function(){tarefaController.listar_por_deletados(1)});
 //fim da alteração juliano
+
+

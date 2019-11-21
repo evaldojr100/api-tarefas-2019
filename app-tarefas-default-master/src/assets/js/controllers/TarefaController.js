@@ -6,6 +6,12 @@ class TarefaController {
     this._tarefaView = new TarefaView()
   }
 
+  //listagem pelo xbacon
+  listarTodas_por_categoria(id){
+    this._tarefas.limpar()
+    
+  }
+
   listar(){
     this._tarefas.limpar()
     this._tarefaService.listarTodas()
