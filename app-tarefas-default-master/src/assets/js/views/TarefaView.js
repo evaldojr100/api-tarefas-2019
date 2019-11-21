@@ -50,7 +50,7 @@ class TarefaView {
         </div>
           <div class="mt-3">
             <a href="#"><img onclick="tarefaController.trocarModalEditar(this),
-            tarefaController.carregarFormulario(this),tarefaController.editar('${tarefa.descricao}','${tarefa.data}','${tarefa.categoria}','${tarefa.prioridade}')"
+            tarefaController.carregarFormulario(this),tarefaController.editar('${tarefa.descricao}','${tarefa.data}','${tarefa.categoria_id}','${tarefa.prioridade}')"
             src="assets/images/editar.svg" alt=""></a>
           </div>
         </div>

@@ -82,7 +82,8 @@ class TarefaController {
     Descricao.value = descricao
 
     const Categoria = document.querySelector('#categoriaTarefa')
-    Categoria.value = innerText(categoria)
+    Categoria.value = categoria
+    
 
     const Prioridade = document.querySelector('#prioridadeTarefa')
     if(prioridade == 1){
