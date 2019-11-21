@@ -33,7 +33,7 @@ class TarefaController {
         this._tarefas.adicionar(tarefa)}
         )
     })
-    .then(() => this._tarefaView.montarGrid(this._tarefas))
+    .then(() => this._tarefaView.sGrid(this._tarefas))
   }
 
   listar_por_deletados (pagina){

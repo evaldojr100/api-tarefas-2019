@@ -17,10 +17,39 @@ class CategoriaController {
       .then(() => this._categoriaView.montarListagem(this._categorias))
   }
 
+
+  
+  listar(){
+    this._categorias.limpar()
+    this._categoriaService.listarTodas()
+      // Adiciona as categorias recebidas na lista de categorias
+      .then(categorias => {
+        categorias.map(categoria => {
+          console.log(categoria)
+          this._categorias.adicionar(categoria)}
+          )
+      })
+      // Passa os dados para a View
+      .then(() => this._categoriaView.montarGrid(this._categorias))
+  }
+
+
+
+
   carregarFormularioCategoria(){
     
     // Mostra o formulário
     $('#modalCategoria').modal('show')
+
+    // var elemento = document.getElementById("categoriaTarefa");
+    
+
+    // this._categorias.limpar()
+    // this._categoriaService.listarTodas()
+    //   // Adiciona as categorias
+    //   .then(categorias => {
+    //     categorias.map())
+    //   })
   }
 
   inserirCategoria(){
