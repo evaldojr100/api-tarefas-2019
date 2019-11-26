@@ -52,6 +52,7 @@ class TarefaController {
     
     // Mostra o formulário
     $('#modalTarefa').modal('show')
+    
   }
 
   trocarModalEditar(){
@@ -86,20 +87,40 @@ class TarefaController {
     Prioridade.value = prioridade
   }
 
-  inserir(){
+  inserir(descricao, data,categoria_id,prioridade,id_user){
     
     // Capturar os dados
     // const descricao = document.querySelector('#descricao').value
     // const datahorario = document.querySelector('#data').value
     // const categoria_id = document.querySelector('#categoria').value
     
-    const tarefa = new Tarefa(this._tarefaView.campoDescricao, this._tarefaView.campoData, this._tarefaView.campoCategoria)
+    // console.log(descricao);
+    // console.log(data);
+    // console.log(categoria_id);
+    // console.log(prioridade);
+    // console.log(id_user);
+   
+    // var corpo =`descricao:${descricao},
+    // data:${data},
+    // categoria_id : ${categoria_id},
+    // prioridade:${prioridade},
+    // id_user:${id_user}`
+    // console.log(corpo)
+    let corpo = `{"descricao":"${descricao}",
+    "data":"${data}",
+    "categoria_id" : "${categoria_id}",
+    "prioridade":"${prioridade}",
+    "id_user":"${id_user}"}`
 
+    
+
+
+    console.log(corpo)
     // Criar a tarefa
     // const tarefa = new Tarefa(descricao, datahorario, categoria_id)
     
     // Enviar a tarefa
-    this._tarefaService.inserir(tarefa.toJSON())
+    this._tarefaService.inserir(corpo)
       .then(res => console.log(res))
   }
 
@@ -112,4 +133,7 @@ class TarefaController {
     // Passa os dados para a View
     
   }
+
+  //juliano 20112019
+
 }

@@ -17,6 +17,18 @@ class CategoriaController {
       .then(() => this._categoriaView.montarListagem(this._categorias))
   }
 
+   //juliano 20112019
+   listar_categoria_inserir(){
+    this._categorias.limpar()
+    this._categoriaService.listarTodas()
+      // Adiciona as categorias
+      .then(categorias => {
+        categorias.map(categoria => this._categorias.adicionar(categoria))
+      })
+      // Chama a view
+      return this._categorias;
+   }
+
   carregarFormularioCategoria(){
     
     // Mostra o formulário

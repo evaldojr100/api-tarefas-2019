@@ -67,18 +67,25 @@ class TarefaService extends Service {
   }
 
   inserir(tarefa){
+    console.log("imprimindo tarefa")
+    console.log(tarefa)
+    let caminho = "http://localhost:3009/api/v1/tarefas/";
     const parametros = {
       method: 'POST',
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(tarefa)
+      body: tarefa
     }
-    // console.log(tarefa)
-    return fetch(`${this._path}`, parametros)
+   
+    return fetch(`${caminho}`,parametros)
             .then(res => {
               if (!res.ok) throw new Error(res.statusText)
-              return res.json()
+                return  alert('Tarefa criada com sucesso')
             })
-            .catch(erro => Mensagem.mostrar(erro, 'alert-danger'))
+            .then(document.location.reload(true))
+          
+            // .catch(erro => Mensagem.mostrar(erro, 'alert-danger')
+            .catch(erro => console.log(erro)
+            )
   }
 
   alterar(tarefa){

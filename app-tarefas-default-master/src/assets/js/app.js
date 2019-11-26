@@ -19,3 +19,16 @@ link_prioridade_baixa.addEventListener("click", function(){tarefaController.list
 var link_deletados = document.getElementById("btn-lixeira");
 link_deletados.addEventListener("click", function(){tarefaController.listar_por_deletados(1)});
 //fim da alteração juliano
+
+var link_deletados = document.getElementById("categoriaTarefa");
+
+var btn_salvar_tarefas = document.getElementById("btn-salvarT");
+
+var campo_descricao = document.getElementById("descricaoTarefa");
+
+var campo_data = document.getElementById("dataTarefa");
+var categoria = document.getElementById("categoriaTarefa");
+var prioridade = document.getElementById("prioridadetarefa_Tarefa");
+
+
+btn_salvar_tarefas.addEventListener("click", function(){tarefaController.inserir(campo_descricao.value,campo_data.value,1,prioridade.value,1)});
