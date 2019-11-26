@@ -397,7 +397,7 @@ exports.listarPorDescricao = (req, res) => {
         page=0
       }
       descricao = '%'+descricao+'%'
-      const query = "select * from tarefas where descricao like ? limit ?,?"
+      const query = "select tarefas.id,tarefas.descricao, tarefas.data, tarefas.realizado,categorias.descricao as 'categoria_desc',categorias.cor from tarefas,categorias where tarefas.categoria_id=categorias.id and tarefas.descricao like ?"
 
       conexao.query(query, [descricao,page,perPage], (err, rows)=>{
         if (err){
