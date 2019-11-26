@@ -18,7 +18,17 @@ class CategoriaController {
   }
 
 
-  
+   listar_categoria_inserir(){
+    this._categorias.limpar()
+    this._categoriaService.listarTodas()
+      // Adiciona as categorias
+      .then(categorias => {
+        categorias.map(categoria => this._categorias.adicionar(categoria))
+      })
+      // Chama a view
+      return this._categorias;
+   }
+
   listar(){
     this._categorias.limpar()
     this._categoriaService.listarTodas()
@@ -32,6 +42,7 @@ class CategoriaController {
       // Passa os dados para a View
       .then(() => this._categoriaView.montarGrid(this._categorias))
   }
+
 
 
 
