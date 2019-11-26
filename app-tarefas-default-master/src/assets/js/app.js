@@ -1,5 +1,9 @@
 const categoriaController = new CategoriaController()
+
 categoriaController.montar()
+
+var carrega = document.getElementById("categoriaTarefa")
+carrega.addEventListener("click", function(){categoriaController.listar()})
 
 const tarefaController = new TarefaController()
 tarefaController.listar("")

@@ -49,7 +49,9 @@ class TarefaView {
           <a href="#"><img onclick="tarefaController.deletar(${tarefa.id})" src="assets/images/delete.svg" alt=""></a>
         </div>
           <div class="mt-3">
-            <a href="#"><img onclick="tarefaController.trocarModalEditar(this),tarefaController.carregarFormulario(this),tarefaController.editar('${tarefa.descricao}','${tarefa.data}','${tarefa.categoria}','${tarefa.prioridade}')" src="assets/images/editar.svg" alt=""></a>
+            <a href="#"><img onclick="tarefaController.trocarModalEditar(this),
+            tarefaController.carregarFormulario(this),tarefaController.editar('${tarefa.descricao}','${tarefa.data}','${tarefa.categoria_id}','${tarefa.prioridade}')"
+            src="assets/images/editar.svg" alt=""></a>
           </div>
         </div>
 

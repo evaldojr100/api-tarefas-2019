@@ -13,7 +13,9 @@ class TarefaController {
       .then(tarefas => {
         tarefas.map(tarefa => {
           console.log(tarefa)
-          this._tarefas.adicionar(tarefa)}
+          this._tarefas.adicionar(tarefa)
+        }
+          
           )
       })
       // Passa os dados para a View
@@ -31,7 +33,7 @@ class TarefaController {
         this._tarefas.adicionar(tarefa)}
         )
     })
-    .then(() => this._tarefaView.montarGrid(this._tarefas))
+    .then(() => this._tarefaView.sGrid(this._tarefas))
   }
 
   listar_por_deletados (pagina){
@@ -82,9 +84,22 @@ class TarefaController {
 
     const Categoria = document.querySelector('#categoriaTarefa')
     Categoria.value = categoria
+    
 
     const Prioridade = document.querySelector('#prioridadeTarefa')
-    Prioridade.value = prioridade
+    if(prioridade == 1){
+          let pri= "Alta"
+          Prioridade.value = innerText(pri)
+    }
+    else if(prioridade == 2){
+          let pri = "Média"
+          Prioridade.value = innerText(pri)
+    }
+    else if(prioridade == 3){
+          let pri = "Baixa"
+         Prioridade.value == innerText(pri)
+
+    }
   }
 
   inserir(descricao, data,categoria_id,prioridade,id_user){
