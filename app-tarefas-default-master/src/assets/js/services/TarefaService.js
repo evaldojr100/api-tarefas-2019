@@ -66,6 +66,37 @@ class TarefaService extends Service {
 
   }
 
+  // If que quando está vazia retorna a lista com todas as tarefas,
+  // quando possui conteudo faz a busca do que esta escrito 
+
+  listarPorDescricao(descricao){
+    descricao.trim() === "" ?  this._path = `${this._url}/tarefas/` :
+    this._path = `http://localhost:3009/api/v1/tarefas/filtro/descri/?f=${descricao}`
+
+    console.log(this._path)
+
+    const parametros = {
+      method: 'GET',
+      headers:{
+        "Content-Type": "application/json" ,
+       
+      }
+    }
+    return fetch(`${this._path}`,parametros)
+    .then(res => {
+      if (!res.ok) throw new Error(res.statusText)
+      return res.json()
+    })
+    .catch(erro => Mensagem.mostrar(erro, 'alert-danger'))
+
+
+  }
+
+
+
+
+
+
   inserir(tarefa){
     const parametros = {
       method: 'POST',

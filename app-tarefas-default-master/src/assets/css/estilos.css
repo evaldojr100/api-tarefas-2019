@@ -40,6 +40,11 @@
 
 #more {display: none;}
 
+#search-box::placeholder {
+  color: #ffffff96;
+  opacity: 1;
+}
+
 @media(max-width: 650px){
   .btn-mobile{
     display: none;

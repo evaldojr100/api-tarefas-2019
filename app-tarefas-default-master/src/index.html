@@ -23,14 +23,15 @@
   <header class="container-fluid" style="background-color: #2F80ED">
     <div class="d-flex justify-content-between pt-2 pb-2">
       <div class="align-self-center">
-        <form class="form-inline">
+        <form class="form-inline" id="search-form">
           <div class="text-white align-self-center mr-3" style="font-size: 24px">
             Tarefa
           </div>
           <div class="form-group has-feedback">
-            <input type="text" class="form-control mr-2" placeholder="Buscar"
+            <input type="text" class="form-control mr-2" id="search-box" placeholder="Buscar"
               style="background-color: #4E90E9; color: #FFF;">
-            <span class="glyphicon glyphicon-search form-control-feedback" style="color: white"></span>
+            <span class="glyphicon glyphicon-search form-control-feedback"
+              onclick="tarefaController.listarPorDescricao()" style="color: white"></span>
           </div>
         </form>
       </div>
@@ -38,7 +39,8 @@
       <div class="align-self-center d-flex">
         <form class="form-inline">
 
-          <button class="btn btn-success mr-3" id="btn-novo" onclick="tarefaController.carregarFormulario(this),tarefaController.trocarModalSalvar(this)">
+          <button class="btn btn-success mr-3" id="btn-novo"
+            onclick="tarefaController.carregarFormulario(this),tarefaController.trocarModalSalvar(this)">
             <img src="assets/images/add-white.svg" alt="Nova tarefa"> Nova</button>
         </form>
         <!--Imagens da notificação-->
@@ -46,24 +48,24 @@
           <img src="assets/images/sino.svg" id="icone" alt="Sino das notificações">
         </a>
       </div>
-      
-     </div>
+
+    </div>
   </header>
 
   <main class="container-fluid d-flex">
     <nav class="separar">
       <div>
-      <div class="mt-3 font-weight-bold d-flex justify-content-between">
-        <span>Categorias:</span>
-        <form class="form-inline">
-          <button class="btn" id="btn-categoria" onclick="categoriaController.carregarFormularioCategoria(this)">
-            <img src="assets/images/add-black.svg" alt="Nova categoria">
-          </button>
-        </form>
-      </div>
-      <ul class="list-unstyled mt-3" id="lista-categorias">
-      <!-- Aqui é onde puxa as categorias da API -->
-      </ul>
+        <div class="mt-3 font-weight-bold d-flex justify-content-between">
+          <span>Categorias:</span>
+          <form class="form-inline">
+            <button class="btn" id="btn-categoria" onclick="categoriaController.carregarFormularioCategoria(this)">
+              <img src="assets/images/add-black.svg" alt="Nova categoria">
+            </button>
+          </form>
+        </div>
+        <ul class="list-unstyled mt-3" id="lista-categorias">
+          <!-- Aqui é onde puxa as categorias da API -->
+        </ul>
         <ul>
           <div class="panel-group">
             <div class="">
@@ -78,79 +80,77 @@
                     </a></li>
                   <li><a href="#" class="link-category">
                       <img src="assets/images/red.svg" alt="" class="mr-1"> Pessoal
-                  </a></li>
+                    </a></li>
                 </ul>
 
               </div>
               <div class="">
                 <h4 class="panel-title">
                   <a data-toggle="collapse" href="#collapse1" onclick="mudar(icone1)">Mais...</a>
-                  <span data-toggle="collapse" href="#collapse1" class="pull-right clickable"><i
-                       id="icone1" class="glyphicon glyphicon-chevron-down" onclick="mudar(icone1)"></i></span>
+                  <span data-toggle="collapse" href="#collapse1" class="pull-right clickable"><i id="icone1"
+                      class="glyphicon glyphicon-chevron-down" onclick="mudar(icone1)"></i></span>
                 </h4>
               </div>
             </div>
           </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
 
-      <!--Modal de categorias-->
-      <div class="modal" id="modalCategoria">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title font-weight-bold ">Inserir nova categoria</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form class="form">
-                <div class="form-group">
-                  <label for="descricao">Descrição:</label>
-                  <input type="text" id="descricao" class="form-control" value="Estudar">
-                </div>
-                <div class="form-group">
-                  <label for="cor">Cor:</label>
-                  <input type="color" id="colorselector"> 
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-primary" id="btn-salvar"
-                onclick="">Salvar</button>
+        <!--Modal de categorias-->
+        <div class="modal" id="modalCategoria">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title font-weight-bold ">Inserir nova categoria</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="form">
+                  <div class="form-group">
+                    <label for="descricao">Descrição:</label>
+                    <input type="text" id="descricao" class="form-control" value="Estudar">
+                  </div>
+                  <div class="form-group">
+                    <label for="cor">Cor:</label>
+                    <input type="color" id="colorselector">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btn-salvar" onclick="">Salvar</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Niveis de prioridades implementação by Ikaro X-Bacon -->
-      <div class="mt-3 font-weight-bold">Prioridade</div>
+        <!-- Niveis de prioridades implementação by Ikaro X-Bacon -->
+        <div class="mt-3 font-weight-bold">Prioridade</div>
+        <div>
+
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="#" class="nav-link active" id="prioridade_alta">Alta</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link active" id="prioridade_media">Média</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link active" id="prioridade_baixa">Baixa</a>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div>
-
-        <ul class="nav flex-column">
-          <li class="nav-item" >
-            <a href="#" class="nav-link active" id = "prioridade_alta" >Alta</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link active" id = "prioridade_media">Média</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link active"
-            id = "prioridade_baixa"
-            >Baixa</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div >
-      <div class=" flex-column">
-          <button type="button" class="btn btn-outline-danger" id="btn-lixeira"> <img src="assets/images/lixeira.svg" alt="Lixeira">   Lixeira</button>
+        <div class=" flex-column">
+          <button type="button" class="btn btn-outline-danger" id="btn-lixeira"> <img src="assets/images/lixeira.svg"
+              alt="Lixeira"> Lixeira</button>
         </div>
       </div>
     </nav>
-    
+
 
 
 
@@ -161,12 +161,12 @@
 
 
     </section>
-     <!--Modal de tarefas -->
+    <!--Modal de tarefas -->
     <div class="modal" id="modalTarefa">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 id ="tituloModalTarefa" class="modal-title font-weight-bold">Inserir nova tarefa</h4>
+            <h4 id="tituloModalTarefa" class="modal-title font-weight-bold">Inserir nova tarefa</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -209,7 +209,7 @@
               onclick="tarefaController.alterar()">Alterar</button>
           </div>
         </div>
-    </div>
+      </div>
   </main>
 
 
@@ -217,7 +217,7 @@
 
   <!-- Importações -->
   <script src="assets/js/util/Mensagens.js"></script>
- 
+
   <script src="assets/js/services/Service.js"></script>
   <script src="assets/js/models/Tarefa.js"></script>
   <script src="assets/js/models/Tarefas.js"></script>
@@ -225,38 +225,37 @@
   <script src="assets/js/controllers/TarefaController.js"></script>
   <script src="assets/js/views/TarefaView.js"></script>
 
-  
+
 
   <script src="assets/js/models/Categoria.js"></script>
-  <script src="assets/js/models/Categorias.js"></script> 
+  <script src="assets/js/models/Categorias.js"></script>
   <script src="assets/js/services/CategoriaService.js"></script>
-  <script src="assets/js/views/CategoriaView.js"></script>  
+  <script src="assets/js/views/CategoriaView.js"></script>
   <script src="assets/js/controllers/CategoriaController.js"></script>
-  <script src="assets/js/controllers/TarefaController.js"></script>
+  <!-- <script src="assets/js/controllers/TarefaController.js"></script> -->
   <script src="assets/js/app.js"></script>
 
   <!-- Importações do Bootstrap -->
   <script src="assets/js/bootstrap/jquery-3.3.1.slim.min.js"></script>
   <script src="assets/js/bootstrap/popper.min.js"></script>
   <script src="assets/js/bootstrap/bootstrap.min.js"></script>
-  <script src="bootstrap-colorselector.js"></script>
+  <!-- <script src="bootstrap-colorselector.js"></script> -->
 
   <script>
-    function mudar(icone1){
+    function mudar(icone1) {
       // Script do ícone do "Mais..."
-      if(document.getElementById("icone1").className == "glyphicon glyphicon-chevron-down"){
+      if (document.getElementById("icone1").className == "glyphicon glyphicon-chevron-down") {
         document.getElementById("icone1").className = "glyphicon glyphicon-chevron-up";
-      }else{
+      } else {
         document.getElementById("icone1").className = "glyphicon glyphicon-chevron-down";
       }
     }
-  </script>
-  <script>
+
     // Script do ícone de notificação
     var notificacao = 1;
     var img = document.getElementById("icone");
 
-    if(notificacao>=1){
+    if (notificacao >= 1) {
       {
         img.src = "assets/images/sino-com-item.svg";
       }
@@ -265,6 +264,15 @@
         img.src = "assets/images/sino.svg";
       }
     }
+
+    //é adicionado um escudador de submissões ao formulario de pesquisa 
+    // e previne a página de redirecionar então chama o método de busca
+    document.querySelector('#search-form').addEventListener('submit', event => {
+      event.preventDefault();
+
+      const pesquisa = document.querySelector("#search-box").value;
+      tarefaController.listarPorDescricao(pesquisa)
+    })
   </script>
 </body>
 
