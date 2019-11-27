@@ -35,4 +35,4 @@ var categoria = document.getElementById("categoriaTarefa");
 var prioridade = document.getElementById("prioridadetarefa_Tarefa");
 
 
-btn_salvar_tarefas.addEventListener("click", function(){tarefaController.inserir(campo_descricao.value,campo_data.value,1,prioridade.value,1)});
+btn_salvar_tarefas.addEventListener("click", function(){tarefaController.inserir(campo_descricao.value,campo_data.value,categoria.value,prioridade.value,1)});
