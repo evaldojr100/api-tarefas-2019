@@ -7,12 +7,12 @@ class CategoriaService extends Service {
   
 
   listarTodas(){
-    return fetch(`${this._path}`)
+    return '{}' /* fetch(`${this._path}`)
             .then(res => {
               if (!res.ok) throw Error(res.statusText)
               return res.json()
             })
-            .catch(erro => Mensagem.mostrar(erro, 'alert-danger'))
+            .catch(erro => Mensagem.mostrar(erro, 'alert-danger'))*/
   }
 
   
