@@ -78,6 +78,7 @@ class TarefaController {
   }
 
   editar(descricao,data,categoria,prioridade){
+    categoriaController.listar()
     const Data = document.querySelector('#dataTarefa')
     Data.value = data
 
